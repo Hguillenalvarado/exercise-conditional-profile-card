@@ -36,7 +36,7 @@ function render(variables = {}) {
           <h1>${variables.name} ${variables.lastname}</h1>
           <h2>${variables.role}</h2>
           <h3>${variables.city}, ${variables.country}</h3>
-          <ul class="position-right">
+          <ul class=${variables.socialMediaPosition}>
             <li><a href=${variables.twitter}><i class="fa fa-twitter"></i></a></li>
             <li><a href=${variables.github}><i class="fa fa-github"></i></a></li>
             <li><a href=${variables.linkedin}><i class="fa fa-linkedin"></i></a></li>
@@ -75,7 +75,9 @@ window.onload = function() {
   document.querySelectorAll(".picker").forEach(function(elm) {
     elm.addEventListener("change", function(e) {
       // <- add a listener to every input
-      const attribute = e.target.getAttribute("for"); // when any input changes, collect the value
+      const attribute = e.target.getAttribute("for");
+
+      // when any input changes, collect the value
       let values = {};
       values[attribute] =
         this.value == "" || this.value == "null"
